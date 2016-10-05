@@ -19,9 +19,13 @@ use untrusted;
 
 mod padding;
 
-pub const RSA_PUBLIC_KEY_MODULUS_BITS_MAX: usize = 4096;
-pub const RSA_PUBLIC_KEY_MODULUS_LIMBS_MAX: usize =
-    (RSA_PUBLIC_KEY_MODULUS_BITS_MAX + limb::LIMB_BITS - 1) / limb::LIMB_BITS;
+// Keep in sync with the documentation comment for `RSAKeyPair` and
+// `PRIVATE_KEY_PUBLIC_MODULUS_BITS_MAX` in rsa.c.
+pub const PRIVATE_KEY_PUBLIC_MODULUS_BITS_MAX: usize = 4096;
+
+pub const PRIVATE_KEY_PUBLIC_MODULUS_LIMBS_MAX: usize =
+    (PRIVATE_KEY_PUBLIC_MODULUS_BITS_MAX + limb::LIMB_BITS - 1) /
+    limb::LIMB_BITS;
 
 // `RSA_PKCS1_SHA1` is intentionally not exposed.
 pub use self::padding::{RSA_PKCS1_SHA256, RSA_PKCS1_SHA384, RSA_PKCS1_SHA512};
