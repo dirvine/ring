@@ -14,8 +14,6 @@
 
 // TODO: enforce maximum input length.
 
-#![allow(dead_code)]
-
 use {c, constant_time, error};
 
 pub struct SigningContext {
